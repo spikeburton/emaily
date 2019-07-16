@@ -17,6 +17,11 @@ router.get(
 
 router.get('/google/callback', passport.authenticate('google'));
 
+router.get('/logout', (req, res) => {
+  req.logOut();
+  res.send(req.user);
+});
+
 router.get('/current_user', (req, res) => {
   res.send(req.user);
 });
