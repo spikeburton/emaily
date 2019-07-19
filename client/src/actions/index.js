@@ -11,7 +11,7 @@ export const fetchUser = () => {
         payload: res.data
       });
     } catch (error) {
-      console.error(error);
+      console.error(error.message);
     }
   };
 };
