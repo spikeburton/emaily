@@ -7,7 +7,17 @@ const passport = require('passport');
 //     passport.authenticate('google', { scope: ['profile', 'email'] })
 //   );
 
-//   app.get('/auth/google/callback', passport.authenticate('google'));
+//   app.get(
+//     '/auth/google/callback',
+//     passport.authenticate('google'),
+//     (req, res) => {
+//       res.redirect('/surveys');
+//     }
+//   );
+
+//   app.get('/auth/current_user', (req, res) => {
+//     res.send(req.user);
+//   });
 // };
 
 router.get(
@@ -15,11 +25,13 @@ router.get(
   passport.authenticate('google', { scope: ['profile', 'email'] })
 );
 
-router.get('/google/callback', passport.authenticate('google'));
+router.get('/google/callback', passport.authenticate('google'), (req, res) => {
+  res.redirect('/surveys');
+});
 
 router.get('/logout', (req, res) => {
   req.logOut();
-  res.send(req.user);
+  res.redirect('/');
 });
 
 router.get('/current_user', (req, res) => {

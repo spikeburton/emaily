@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class Header extends Component {
   render() {
+    const { user, loading } = this.props.auth;
+
     return (
       <nav>
         <div className="nav-wrapper">
@@ -9,9 +12,16 @@ class Header extends Component {
             Emaily
           </a>
           <ul className="right">
-            <li>
-              <a href="">Login With Google</a>
-            </li>
+            {!loading &&
+              (!user ? (
+                <li>
+                  <a href="/auth/google">Login With Google</a>
+                </li>
+              ) : (
+                <li>
+                  <a href="">Log Out</a>
+                </li>
+              ))}
           </ul>
         </div>
       </nav>
@@ -19,4 +29,8 @@ class Header extends Component {
   }
 }
 
-export default Header;
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps)(Header);
