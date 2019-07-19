@@ -19,7 +19,7 @@ class Header extends Component {
                 </li>
               ) : (
                 <li>
-                  <a href="">Log Out</a>
+                  <a href="/auth/logout">Log Out</a>
                 </li>
               ))}
           </ul>

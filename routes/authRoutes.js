@@ -30,7 +30,7 @@ router.get('/google/callback', passport.authenticate('google'), (req, res) => {
 });
 
 router.get('/logout', (req, res) => {
-  req.logOut();
+  req.logout();
   res.redirect('/');
 });
 
