@@ -29,7 +29,7 @@ passport.use(
       // console.log('profile: ', profile);
       let user = await User.findOne({ googleId: profile.id });
 
-      if (user) return done(user);
+      if (user) return done(null, user);
 
       user = await new User({ googleId: profile.id }).save();
       done(null, user);
