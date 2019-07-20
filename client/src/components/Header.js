@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+
+import Payments from './Payments';
 
 class Header extends Component {
   render() {
@@ -19,9 +21,14 @@ class Header extends Component {
                   <a href="/auth/google">Login With Google</a>
                 </li>
               ) : (
-                <li>
-                  <a href="/auth/logout">Log Out</a>
-                </li>
+                <Fragment>
+                  <li>
+                    <Payments />
+                  </li>
+                  <li>
+                    <a href="/auth/logout">Log Out</a>
+                  </li>
+                </Fragment>
               ))}
           </ul>
         </div>
