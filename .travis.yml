@@ -1,0 +1,15 @@
+language: node_js
+before_install:
+- npm install -g npm
+script:
+- npm install
+- npm run pretest
+- NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix
+  client
+deploy:
+  provider: heroku
+  api_key:
+    secure: AmkzjMGR9ENy59RlXFfbbRwkIghZhczALlqxAh6OCByBunDB4JgCvfPK30Zh8O+J2APIsxwH0GW1MRAsjO+nh2hW6mEsj7ZorvSK5heqUPCTA9YWKbbl34iQZRAWzc5z1l/RaBJH7RaTwxznG+X43+4YA77xxYtZGfFl9rZOHUgkvWEFkpMIzrPg7H9EUWZ0mjwQWd7OYR/g8lCvQmgcxbzOsRb3B3nZUqQZFkBp3u+a0XVteIIzygYW8NHxM/znFAL5Jvt1loIx472ogussqjs6QI7unJ68SSZjmhxOmXmj+0pT8D0ZvnLg30CCBJ/szPckM5tPa+3UgqgNYOPMUd3IyK/CL+59v6SHkyakgCHFyvbZtyHC8sgJsb/hjecMaWEr50OafyqbIEV0SipmcmOQdo5EKUqWDjumk4WyQs+I4Rq56NZm+btBZWYVzJbz1LNhfTC3HQyoRbC17+7/vu6wS+PK//i+QznYv86Ll46O9DM2WdZ5jlO0qEAscDf47IiZL597OfmXbi2K8mVgHbslUHvlmLc5PgN93jQgNrnm7RkCRqKri4Q1FRgeX13yUNlq2ePNo1b8kCWnWKNK3i89kdCZD97OhCVHwySH2NtTC0Nbtsfuso9t33119siiOhxCsOMCT1liHnF5TQGCSdKCz8jwKdqAqVzOTIgmRjY=
+  app: rocky-thicket-69982
+  on:
+    repo: spikeburton/emaily
