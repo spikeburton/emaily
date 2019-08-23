@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
+import { Link } from 'react-router-dom';
 
 import SurveyField from './SurveyField';
 
@@ -34,7 +35,13 @@ class SurveyForm extends Component {
       <div>
         <form onSubmit={this.props.handleSubmit(console.log)}>
           {this.renderFields()}
-          <button type="submit">Submit</button>
+          <Link to="/surveys" className="red btn-flat white-text">
+            Cancel
+          </Link>
+          <button type="submit" className="teal btn-flat right white-text">
+            Submit
+            <i className="material-icons right">done</i>
+          </button>
         </form>
       </div>
     );
